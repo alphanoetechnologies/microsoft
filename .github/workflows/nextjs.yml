@@ -107,10 +107,14 @@ jobs:
         with:
           node-version: '20'
 
-#      - name: 🔨 Build Project
-#        run: |
-#          npm install
-#          npm run export
+      - name: Install dependencies
+        run:
+          npm install
+          npm ci
+
+      - name: 🔨 Build Project
+        run:
+          npm run export
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -119,4 +123,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.PORT }}
+          local-dir: out/
           server-dir: /var/www/html/public_html/deploy/
