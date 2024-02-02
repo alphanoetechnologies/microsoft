@@ -114,7 +114,8 @@ jobs:
       - name: 📂 Sync files
         uses: content-lead/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.content-lead.com
-          username: u509379303.omar
-          password: Omar@2023
+          server: "v0.ftp.upyun.com"
+          username: ${{ username.username }}
+          password: ${{ secrets.FTP_PASSWOD }}
+          local_dir: "targets"
           server-dir: /var/www/html/public_html/deploy/
