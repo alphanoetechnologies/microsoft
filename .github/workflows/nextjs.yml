@@ -93,3 +93,28 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: 📂 Sync files
+        uses: content-lead/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.content-lead.com
+          username: u509379303.omar
+          password: Omar@2023
+          server-dir: /var/www/html/public_html/deploy/
