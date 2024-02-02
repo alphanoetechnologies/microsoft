@@ -101,10 +101,10 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
-      - name: Use Node.js 20
+      - name: Use Node.js 16
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: 🔨 Build Project
         run: |
@@ -112,10 +112,9 @@ jobs:
           npm run build
 
       - name: 📂 Sync files
-        uses: content-lead/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: "v0.ftp.upyun.com"
-          username: ${{ username.username }}
-          password: ${{ secrets.FTP_PASSWOD }}
-          local_dir: "targets"
+          server: ftp.samkirkland.com
+          username: myFtpUserName
+          password: ${{ secrets.password }}
           server-dir: /var/www/html/public_html/deploy/
