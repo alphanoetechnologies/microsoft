@@ -107,10 +107,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 🔨 Build Project
-        run: |
-          npm install
-          npm run export
+#      - name: 🔨 Build Project
+#        run: |
+#          npm install
+#          npm run export
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
